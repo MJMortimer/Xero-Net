@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.IO;
 using System.Net;
 
@@ -21,7 +22,9 @@ namespace Xero.Api.Infrastructure.Http
                 stream.CopyTo(Stream);
                 // rewind
                 Stream.Seek(0, SeekOrigin.Begin);
-            }            
+            }
+
+            Headers = inner.Headers;
         }
 
         public string Body
@@ -52,5 +55,7 @@ namespace Xero.Api.Infrastructure.Http
         public int ContentLength { get; private set; }
 
         public string ContentType { get; private set; }
+
+        public NameValueCollection Headers { get; private set; }
     }
 }

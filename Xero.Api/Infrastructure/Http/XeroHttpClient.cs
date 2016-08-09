@@ -147,7 +147,8 @@ namespace Xero.Api.Infrastructure.Http
                 var body = response.Body;
                 if (body.Contains("oauth_problem"))
                 {
-                    throw new RateExceededException(body);
+                    var exceededRateLimitType = response.Headers.Get("X-Rate-Limit-Problem");
+                    throw new RateExceededException(body, exceededRateLimitType);
                 }
 
                 throw new NotAvailableException(body);
