@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 using Xero.Api.Payroll.America.Model.Types;
 
 namespace Xero.Api.Payroll.America.Model
 {
     [DataContract(Namespace = "")]
-    public class SalaryAndWage
+    public class SalaryAndWage : HasValidationErrors
     {
         [DataMember(Name = "SalaryAndWagesID")]
         public Guid Id { get; set; }

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 
 namespace Xero.Api.Payroll.America.Model
 {
     [DataContract(Namespace = "")]
-    public class OpeningBalances
+    public class OpeningBalances : HasValidationErrors
     {
         [DataMember]
         public List<BenefitLine> BenefitLines { get; set; }

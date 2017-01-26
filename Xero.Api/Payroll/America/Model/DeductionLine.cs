@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 using Xero.Api.Payroll.America.Model.Types;
 
 namespace Xero.Api.Payroll.America.Model
 {
     [DataContract(Namespace = "")]
-    public class DeductionLine
+    public class DeductionLine : HasValidationErrors
     {
         [DataMember(Name = "DeductionTypeID")]
         public Guid DeductionTypeId { get; set; }

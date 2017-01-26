@@ -1,10 +1,11 @@
 ﻿using System.Runtime.Serialization;
+using Xero.Api.Common;
 using Xero.Api.Payroll.America.Model.Types;
 
 namespace Xero.Api.Payroll.America.Model
 {
     [DataContract(Namespace = "")]
-    public class Address
+    public class Address : HasValidationErrors
     {
         [DataMember]
         public string StreetAddress { get; set; }

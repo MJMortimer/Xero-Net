@@ -6,11 +6,8 @@ using Xero.Api.Infrastructure.Model;
 namespace Xero.Api.Common
 {
     [DataContract(Namespace = "")]
-    public abstract class CoreData
+    public abstract class CoreData : HasValidationErrors
     {
-        [DataMember(EmitDefaultValue = false, Name = "ValidationErrors")]
-        public List<ValidationError> Errors { get; set; }
-
         [DataMember(EmitDefaultValue = false, Name = "Warnings")]
         public List<Warning> Warnings { get; set; }
 
