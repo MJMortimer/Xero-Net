@@ -93,6 +93,13 @@ namespace Xero.Api.Infrastructure.Http
                 return JsonMapper.From<TResponse>(response.Body).Values;
             }
 
+            //Check for inline errors on a bad request
+            var dataContract = JsonMapper.From<TResponse>(response.Body).Values;
+            if (response.StatusCode == HttpStatusCode.BadRequest && dataContract != null && dataContract.Any())
+            {
+                return dataContract;
+            }
+
             HandleErrors(response);
             
             return null;
