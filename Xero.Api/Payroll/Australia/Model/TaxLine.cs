@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
     [DataContract(Namespace = "")]
-    public class TaxLine
+    public class TaxLine : HasValidationErrors
     {
         [DataMember(Name = "PayslipTaxLineID")]
         public Guid PayslipTaxLineId { get; set; }

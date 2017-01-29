@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 using Xero.Api.Payroll.Australia.Model.Status;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
     [DataContract(Namespace = "")]
-    public class LeavePeriod
+    public class LeavePeriod : HasValidationErrors
     {
         [DataMember]
         public DateTime? PayPeriodStartDate { get; set; }

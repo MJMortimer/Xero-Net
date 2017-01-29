@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 using Xero.Api.Payroll.Australia.Model.Types;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
     [DataContract(Namespace = "")]
-    public class SuperannuationLine
+    public class SuperannuationLine : HasValidationErrors
     {
         [DataMember(Name = "SuperMembershipID")]
         public Guid SuperMembershipId { get; set; }

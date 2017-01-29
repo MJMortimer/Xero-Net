@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
     [DataContract(Namespace = "")]
-    public class LeaveBalance
+    public class LeaveBalance : HasValidationErrors
     {
         [DataMember(EmitDefaultValue = false)]
         public string LeaveName { get; set; }

@@ -1,9 +1,10 @@
 ﻿using System.Runtime.Serialization;
+using Xero.Api.Common;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
     [DataContract(Namespace = "")]
-    public class BankAccount
+    public class BankAccount: HasValidationErrors
     {
         [DataMember]
         public string StatementText { get; set; }

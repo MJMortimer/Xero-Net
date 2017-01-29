@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
     [DataContract(Namespace = "")]
-    public class TimesheetEarningsLine
+    public class TimesheetEarningsLine : HasValidationErrors
     {
         [DataMember(Name = "EarningsRateID")]
         public Guid EarningsRateId { get; set; }

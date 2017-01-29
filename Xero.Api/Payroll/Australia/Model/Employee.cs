@@ -99,8 +99,5 @@ namespace Xero.Api.Payroll.Australia.Model
 
         [DataMember(EmitDefaultValue = false)]
         public TaxDeclaration TaxDeclaration { get; set; }
-
-        [DataMember(EmitDefaultValue = false)]
-        public List<ValidationError> ValidationErrors { get; set; }
     }
 }

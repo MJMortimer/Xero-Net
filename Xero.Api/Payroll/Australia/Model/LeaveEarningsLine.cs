@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
     [DataContract(Namespace = "")]
-    public class LeaveEarningsLine
+    public class LeaveEarningsLine : HasValidationErrors
     {
         [DataMember(Name = "EarningsRateId", EmitDefaultValue = false)]
         public Guid Id { get; set; }

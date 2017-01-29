@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
     [DataContract(Namespace = "")]
-    public class PayTemplate
+    public class PayTemplate : HasValidationErrors
     {
         [DataMember]
         public List<EarningsLine> EarningsLines { get; set; }

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
     [DataContract(Namespace = "")]
-    public class OpeningBalances
+    public class OpeningBalances : HasValidationErrors
     {
         [DataMember]
         public DateTime OpeningBalanceDate { get; set; }

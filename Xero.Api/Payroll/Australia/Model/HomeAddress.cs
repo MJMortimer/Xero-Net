@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+using Xero.Api.Infrastructure.Model;
 using Xero.Api.Payroll.Australia.Model.Types;
 
 namespace Xero.Api.Payroll.Australia.Model
@@ -23,5 +25,8 @@ namespace Xero.Api.Payroll.Australia.Model
 
         [DataMember]
         public string Country { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Name = "ValidationErrors")]
+        public List<ValidationError> Errors { get; set; }
     }
 }

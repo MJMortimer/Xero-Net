@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
     [DataContract(Namespace = "")]
-    public class ReimbursementLine
+    public class ReimbursementLine : HasValidationErrors
     {
         [DataMember(Name = "ReimbursementTypeID")]
         public Guid Id { get; set; }
