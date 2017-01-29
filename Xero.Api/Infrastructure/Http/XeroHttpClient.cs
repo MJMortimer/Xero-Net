@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
+using Newtonsoft.Json.Linq;
 using Xero.Api.Common;
 using Xero.Api.Infrastructure.Exceptions;
 using Xero.Api.Infrastructure.Interfaces;
+using Xero.Api.Infrastructure.Model;
 using Xero.Api.Infrastructure.RateLimiter;
+using Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text;
+using Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text.Json;
 
 namespace Xero.Api.Infrastructure.Http
 {
@@ -93,13 +97,6 @@ namespace Xero.Api.Infrastructure.Http
                 return JsonMapper.From<TResponse>(response.Body).Values;
             }
 
-            //Check for inline errors on a bad request
-            var dataContract = JsonMapper.From<TResponse>(response.Body).Values;
-            if (response.StatusCode == HttpStatusCode.BadRequest && dataContract != null && dataContract.Any())
-            {
-                return dataContract;
-            }
-
             HandleErrors(response);
             
             return null;
@@ -113,6 +110,16 @@ namespace Xero.Api.Infrastructure.Http
 
                 if (data.Elements != null && data.Elements.Any())
                 {
+                    throw new ValidationException(data);
+                }
+
+                //check for inline errors
+                var jObject = JObject.Parse(response.Body);
+                var validationErrors = jObject.SelectTokens("$..ValidationErrors..Message").Select(p => new ValidationError() { Message = p.ToString() }).ToList();
+
+                if (validationErrors.Any())
+                {
+                    data.Elements = new List<DataContractBase>() {new DataContractBase {ValidationErrors = validationErrors} };
                     throw new ValidationException(data);
                 }
 
