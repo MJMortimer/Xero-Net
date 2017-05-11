@@ -5,7 +5,7 @@ Xero-Net
 
 A skinny wrapper of the Xero API. Supports Payroll. All third party libraries are included as source code.
 
-* [Installation] (#installation)
+* [Installation](##installation)
 * [What is supported?] (#what-is-supported)
 * [Things to note] (#things-to-note)
 * [Samples] (#samples)
